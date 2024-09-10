@@ -40,17 +40,16 @@ productRouter.put("/:id", async function (req, resp) {
   if (!mongoose.isValidObjectId(id)) {
     resp.json({ msg: `Invalid object ID ${id}` }).status(400);
   } else {
-    const product = new productModel();
-    product.ID = req?.body?.ID;
-    product.name = req?.body?.name;
-    product.description = req?.body?.description || " ";
-    product.price = req?.body?.price;
-    const newProduct = await productModel.findByIdAndUpdate(id, product);
-    if (!newProduct) {
+    const product = await productModel.findByIdAndUpdate(id, req.body);
+    if (!product) {
       resp.json({ msg: `product with id ${id} not found` }).status(404);
     } else {
+      const updatedProduct = await productModel.findById(id);
       resp
-        .json({ msg: `product with id ${id} updated`, newProduct: newProduct })
+        .json({
+          msg: `product with id ${id} updated`,
+          updatedProduct: updatedProduct,
+        })
         .status(200);
     }
   }
