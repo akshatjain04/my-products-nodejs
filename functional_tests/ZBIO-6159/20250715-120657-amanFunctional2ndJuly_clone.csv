@@ -1,0 +1,8 @@
+"Scenario: Upload Jira Ticket as PDF"
+"Scenario: PDF Parsing of Jira Ticket"
+"Scenario: Error Handling for Unsupported File Formats"
+"Scenario: Verify Data Flow Across System Components"
+"Scenario: Performance of PDF Parsing"
+"Scenario: System Scalability with High File Volumes"
+"Scenario: Validation of File Path Storage in Roost-reg"
+"Scenario: Error Recovery from Interrupted Uploads"
